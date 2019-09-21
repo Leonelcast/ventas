@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul *ngIf="authService.isAuthenticated()" class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Mantenimientos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['home']">Home</a>
+
+          <a class="dropdown-item" [routerLink]="['categorias']">Categorias</a>
+          <a class="dropdown-item" [routerLink]="['tipoEmpaques']">Tipo Empaques</a>
+          <a class="dropdown-item" [routerLink]="['clientes']">Clientes</a>
+          <a class="dropdown-item" [routerLink]="['proveedores']">Proveedores</a>
+
+
+
+          <div class="dropdown-divider"></div>
+
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+      <li  *ngIf="!authService.isAuthenticated()">
+        <a [routerLink]="['/login']" class="btn btn-outline-primary">Sign In</a>
+      </li>
+      <li *ngIf="authService.isAuthenticated()" class="dropdown">
+        <a class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" href="#">Leonel Castaneda</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button (click)="logout()"class="dropdown-item" type="submit">Sign Out</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

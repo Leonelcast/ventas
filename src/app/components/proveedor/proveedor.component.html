@@ -1,0 +1,50 @@
+<br>
+<br>
+<div class="card border-primary mb-3">
+    <div class="card-header">Proveedores</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de Proveedores</h5>
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['home']">
+                Crear proveedores
+            </button>
+        </div>
+        <div *ngIf="proveedores.lenght == 0" class="alert alert-info">
+            no hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>CodigoProveedores</th>
+                    <th>Nit</th>
+                    <th>Razon Social</th>
+                    <th>Direccion</th>
+                    <th>Pagina Web</th>
+                    <th>Contacto principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let proveedor of proveedores">
+                    <td>
+                        {{proveedor.codigoProveedor}}
+                    </td>
+                    <td>
+                        {{proveedor.nit}}
+                    </td>
+                    <td>
+                        {{proveedor.razonSocial}}
+                    </td>
+                    <td>
+                        {{proveedor.direccion}}
+                    </td>
+                    <td>
+                        {{proveedor.paginaWeb}}
+                    </td>
+                    <td>
+                        {{proveedor.contactoPrincipal}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
