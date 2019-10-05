@@ -8,6 +8,7 @@ import { ProveedorComponent } from './components/proveedor/proveedor.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthguardGuard } from './components/login/guards/authguard.guard';
 import { ProductosComponent } from './components/productos/productos.component';
+import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 
 const APP_ROUTES: Routes =[
     {path: 'login', component: LoginComponent},
@@ -17,6 +18,7 @@ const APP_ROUTES: Routes =[
     {path: 'clientes', component: ClienteComponent},
     {path: 'proveedores', component: ProveedorComponent },
     {path: 'productos', component: ProductosComponent},
+    {path: 'productosForm', component: ProductosFormComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'home'}
 
 ];

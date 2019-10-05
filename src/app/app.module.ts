@@ -17,6 +17,7 @@ import { FormsModule } from "@angular/forms";
 import { TokenInterceptor } from './components/login/interceptors/token.interceptor';
 import { ProductosComponent } from './components/productos/productos.component';
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
+import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AuthInterceptor } from './components/login/interceptors/auth.intercepto
     ProveedorComponent,
     LoginComponent,
     ProductosComponent,
+    ProductosFormComponent,
   ],
   imports: [
     BrowserModule,
