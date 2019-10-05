@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthguardGuard } from './components/login/guards/authguard.guard';
+import { ProductosComponent } from './components/productos/productos.component';
 
 const APP_ROUTES: Routes =[
     {path: 'login', component: LoginComponent},
@@ -15,6 +16,7 @@ const APP_ROUTES: Routes =[
     {path: 'tipoEmpaques', component: TipoEmpaquesComponent},
     {path: 'clientes', component: ClienteComponent},
     {path: 'proveedores', component: ProveedorComponent },
+    {path: 'productos', component: ProductosComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'home'}
 
 ];

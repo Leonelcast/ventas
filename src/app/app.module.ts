@@ -16,7 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from "@angular/forms";
 import { TokenInterceptor } from './components/login/interceptors/token.interceptor';
 import { ProductosComponent } from './components/productos/productos.component';
-
+import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { ProductosComponent } from './components/productos/productos.component';
 
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
