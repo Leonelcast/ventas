@@ -1,8 +1,13 @@
+<app-productos-form *ngIf="productoSeleccionado" [producto]="productoSeleccionado" [id]="productoSeleccionado.codigoProducto"></app-productos-form>
 <br>
 <div class="card border-primary mb-3">
     <div class="card-header">Productos</div>
     <div class="card-body text-primary">
         <h5 class="card-tittle">Listado de productos</h5>
+        <hr>
+        <button class="btn btn-primary" type="button" (click)= "abrirModal(null)">Crear Producto</button>
+        <br>
+        <br>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -11,15 +16,23 @@
                     <th>PRECIO</th>
                     <th>CATEGORIAS</th>
                     <th>TIPO DE EMPAQUE</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let producto of productos">
-                    <td>{{producto.codigoProducto}}</td>
+                    <td> <a (click)= "abrirModal(producto)">{{producto.codigoProducto}}</a> </td>
                     <td>{{producto.descripcion}}</td>
                     <td>{{producto.precioUnitario}}</td>
                     <td>{{producto.categoria.descripcion}}</td>
                     <td>{{producto.tipoEmpaque.descripcion}}</td>
+                    <td>
+                        <button (click)= "abrirModal(producto)"  type="button" name="editar" class="btn btn-primary btn-sm">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="delete(producto)" type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
                     
 
                 </tr>

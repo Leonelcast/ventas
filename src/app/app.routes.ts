@@ -19,6 +19,7 @@ const APP_ROUTES: Routes =[
     {path: 'proveedores', component: ProveedorComponent },
     {path: 'productos', component: ProductosComponent},
     {path: 'productosForm', component: ProductosFormComponent},
+    
     {path: '**', pathMatch: 'full', redirectTo: 'home'}
 
 ];

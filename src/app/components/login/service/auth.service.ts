@@ -53,7 +53,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     const payload = this.GetDataToken(this.token);
     if (payload != null && payload.unique_name && payload.unique_name.length > 0) {
-      console.log(payload.unique_name.length);
+      //console.log(payload.unique_name.length);
       return true;
     }
     return false;

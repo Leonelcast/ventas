@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import swal from 'sweetalert2';
 
+
 export class AuthInterceptor implements HttpInterceptor{
     constructor(private authservice: AuthService, private router: Router){}
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
