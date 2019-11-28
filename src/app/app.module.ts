@@ -18,6 +18,8 @@ import { TokenInterceptor } from './components/login/interceptors/token.intercep
 import { ProductosComponent } from './components/productos/productos.component';
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { CategoriasFormComponent } from './components/categorias/categorias-form/categorias-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ProductosFormComponent } from './components/productos/productos-form/pr
     LoginComponent,
     ProductosComponent,
     ProductosFormComponent,
+    PaginatorComponent,
+    CategoriasFormComponent,
   ],
   imports: [
     BrowserModule,

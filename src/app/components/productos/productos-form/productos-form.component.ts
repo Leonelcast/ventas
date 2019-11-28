@@ -17,9 +17,9 @@ import { ModalProductoService } from '../modal-producto.service';
 })
 export class ProductosFormComponent implements OnInit {
   titulo: string;
- @Input() producto: ProductoCreacionDTO; //se utiliza imput cuando se esta modificando
+  @Input() producto: Producto; //se utiliza imput cuando se esta modificando
   categorias: Categoria[];
-  @Input() id:number;
+
   tipoEmpaques: TipoEmpaque[] = [];
   productoDTO: ProductoCreacionDTO = new ProductoCreacionDTO(); //se utiliza para crear, ya que tiene una nueva instancia 
 
@@ -27,40 +27,70 @@ export class ProductosFormComponent implements OnInit {
     private productoService: ProductoService,
     private categoriaService: CategoriaService,
     private tipoEmpaqueService: TipoEmpaquesService,
-    private router: Router, 
+    private router: Router,
     private modalProductoService: ModalProductoService) {
 
   }
 
   ngOnInit() {
-    this.categoriaService.getCategorias().subscribe(categorias => this.categorias = categorias);
+    this.categoriaService.getCategorias().subscribe((response: any) => this.categorias = response.content as Categoria[]);
     this.tipoEmpaqueService.getTipoEmpaques().subscribe(tipoEmpaques => this.tipoEmpaques = tipoEmpaques);
   }
+  //las 3 cosas que espera recibir son los que esta en productoCreacionDTO son los codigos y la descripcion 
+  //esto sirve para optimizar los recursos ya que no se utilizan todos los recursos de productos 
   create(): void {
-    this.productoService.create(this.productoDTO).subscribe(
+    const nuevo = new ProductoCreacionDTO();
+    nuevo.codigoCategoria = this.producto.categoria.codigoCategoria;
+    nuevo.codigoEmpaque = this.producto.tipoEmpaque.codigoEmpaque;
+    nuevo.descripcion = this.producto.descripcion;
+    this.productoService.create(nuevo).subscribe(
       producto => {
-        this.router.navigate(['/productos']);
-        swal.fire('Nuevo producto', `El producto ${this.producto.descripcion} ha sido creado con exito!!`, 'success');
+        swal.fire(' Nuevo Producto', `El producto ${producto.descripcion} ha sido creado con exito!!`, 'success');
+        producto.categoria = this.producto.categoria;
+        producto.tipoEmpaque = this.producto.tipoEmpaque;
+        this.modalProductoService.notificarCambio.emit(producto);//agrega un elemento, este hace un push 
         this.modalProductoService.cerrarModal();
-        this.producto=null;
+        this.router.navigateByUrl('/productos');
       },
       error => {
         swal.fire('Nuevo producto', `Error code ${error.status}`, 'error')
       }
-    ); 
+
+    );
   }
-  update(): void{
-    this.productoService.update(this.id, this.producto).subscribe(
-      producto =>{
-      this.router.navigate(['/productos']);
-      swal.fire('Actualizar Producto', `El producto ${this.producto.descripcion} ha sido actualizado!!`, 'success');
-      this.modalProductoService.cerrarModal();
-      this.producto=null;
+  update(): void {
+    const nuevo = new ProductoCreacionDTO();
+    nuevo.codigoCategoria = this.producto.codigoCategoria;
+    nuevo.codigoEmpaque = this.producto.codigoEmpaque;
+    nuevo.descripcion = this.producto.descripcion;
+    this.productoService.update(this.producto.codigoProducto, nuevo).subscribe(
+      () => {
+        swal.fire('Actualizar Producto', `El producto ${nuevo.descripcion} ha sido actualizado!!`, 'success');
+        this.modalProductoService.notificarCambio.emit(this.producto);
+        this.modalProductoService.cerrarModal();
+        this.router.navigate(['/productos']);
       }
     );
   }
-  cerrarModal(): void{
+  cerrarModal(): void {
     this.modalProductoService.cerrarModal();
-    this.producto = null;
+  }
+//? es como un if en la misma linea 
+//valor original comparandolo con un valor del box
+  compararCategoria(o1: Categoria, o2: Categoria): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+    return o1 === null || o2 === null || o1 === undefined 
+    || o2 === undefined ? false : o1.codigoCategoria === o2.codigoCategoria;
+
+  }
+  compararTipoEmpaque(o1: TipoEmpaque, o2: TipoEmpaque): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+    return o1 === null || o2 === null || o1 === undefined 
+    || o2 === undefined ? false : o1.codigoEmpaque === o2.codigoEmpaque;
+
   }
 }

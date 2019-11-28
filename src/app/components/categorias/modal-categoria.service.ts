@@ -3,7 +3,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ModalProductoService {
+export class ModalCategoriaService {
   modal: boolean = false;
   private _notificarCambio = new EventEmitter<any>();
   

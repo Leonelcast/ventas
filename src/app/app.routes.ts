@@ -9,11 +9,13 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthguardGuard } from './components/login/guards/authguard.guard';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
+import { CategoriasFormComponent } from './components/categorias/categorias-form/categorias-form.component';
 
 const APP_ROUTES: Routes =[
     {path: 'login', component: LoginComponent},
     {path: 'home', component: HomeComponent, canActivate: [AuthguardGuard] },
     {path: 'categorias', component: CategoriasComponent },
+    {path: 'categoriasForm', component: CategoriasFormComponent},
     {path: 'tipoEmpaques', component: TipoEmpaquesComponent},
     {path: 'clientes', component: ClienteComponent},
     {path: 'proveedores', component: ProveedorComponent },

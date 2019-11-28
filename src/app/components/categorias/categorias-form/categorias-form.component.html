@@ -1,4 +1,4 @@
-<div class="abrir-Modal" *ngIf="modalProductoService.modal">
+<div class="abrir-Modal" *ngIf="modalCategoriaService.modal">
     <div class="modal" tabindex="-1" role="dialog" style="display: block;">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -15,20 +15,20 @@
                                         {{titulo}}
                                     </div>
                         <div class="card-body text-primary" style="background: rgb(167, 166, 165)">
-                            <form #productoForm="ngForm">
+                            <form #categoriaForm="ngForm">
                                 <div class="form-group row">
                                     <label for="descripcion" class="col-form-label col-sm-2">Descripcion</label>
-                                    <div class="col-sm-6" *ngIf="producto">
-                                        <input type="text" class="form-control" [(ngModel)]="producto.descripcion"
+                                    <div class="col-sm-6" *ngIf="categoria">
+                                        <input type="text" class="form-control" [(ngModel)]="categoria.descripcion"
                                             name="descripcion" #descripcion="ngModel"
-                                            placeholder="Ingrese la descripcion del producto">
+                                            placeholder="Ingrese la descripcion del categoria">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="categoria" class="col-form-label col-sm-2">Categoria</label>
                                     <div class="col-sm-6" >
-                                        <select [compareWith]="compararCategoria" name="categoria" class="form-control" [(ngModel)]="producto.categoria">
-                                            <option *ngIf="!producto.codigoProducto" [ngValue]="undefined">-----Seleccionar una categoria-----</option>
+                                        <select [compareWith]="compararCategoria" name="categoria" class="form-control" [(ngModel)]="categoria.categoria">
+                                            <option *ngIf="!categoria.codigocategoria" [ngValue]="undefined">-----Seleccionar una categoria-----</option>
                                             <option *ngFor="let categoria of categorias"
                                                 [ngValue]="categoria">
                                                 {{categoria.descripcion}}
@@ -41,8 +41,8 @@
                                     <label for="tipoEmpaque" class="col-form-label col-sm-2">Tipo de Empaque</label>
                                     <div class="col-sm-6" >
                                         <select [compareWith]="compararTipoEmpaque" name="tipoEmpaque" class="form-control"
-                                            [(ngModel)]="producto.tipoEmpaque">
-                                            <option *ngIf="!producto.codigoProducto" [ngValue]="undefined">-----Seleccionar un tipo de empaque-----
+                                            [(ngModel)]="categoria.tipoEmpaque">
+                                            <option *ngIf="!categoria.codigocategoria" [ngValue]="undefined">-----Seleccionar un tipo de empaque-----
                                             </option>
                                             <option *ngFor="let tipo of tipoEmpaques" [ngValue]="tipo">
                                                 {{tipo.descripcion}}
@@ -52,10 +52,10 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-form-label col-sm-8">
-                                        <button  *ngIf="!producto.codigoProducto" class="btn btn-primary" role="button" (click)="create()">Crear</button>
+                                        <button  *ngIf="!categoria.codigocategoria" class="btn btn-primary" role="button" (click)="create()">Crear</button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button *ngIf="producto.codigoProducto" class="btn btn-primary" role="button" (click)="update()">Actualizar</button>
+                                        <button *ngIf="categoria.codigocategoria" class="btn btn-primary" role="button" (click)="update()">Actualizar</button>
                                     </div>
                                 </div>
                             </form>
