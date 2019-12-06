@@ -33,7 +33,7 @@ export class ProductosFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoriaService.getCategorias().subscribe((response: any) => this.categorias = response.content as Categoria[]);
+    this.categoriaService.getCategorias().subscribe((response: any) => this.categorias = response as Categoria[]);
     this.tipoEmpaqueService.getTipoEmpaques().subscribe(tipoEmpaques => this.tipoEmpaques = tipoEmpaques);
   }
   //las 3 cosas que espera recibir son los que esta en productoCreacionDTO son los codigos y la descripcion 

@@ -1,0 +1,41 @@
+<br>
+<div class="card border-primary mb-3">
+    <div class="card-header">Facturas</div>
+    <div class="card-body text-primary">
+        <h5 class="card-tittle">Listado de Facturas</h5>
+        <hr>
+        <button class="btn btn-primary" type="button" (click)= "abrirModal()">Crear Facturas</button>
+        <br>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>NIT</th>
+                    <th>FECHA</th>
+                    <th>TOTAL</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Facturas of Facturass">
+                    <td>{{facturas.numeroFactura}} </td>
+                    <td>{{facturas.cllientes.nit}} </td>
+                    <td>{{Facturas.fecha}}</td>
+                    <td>{{Facturas.total}}</td>
+                    <td>
+                        <button (click)= "abrirModal(Facturas)"  type="button" name="editar" class="btn btn-primary btn-sm">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="delete(Facturas)" type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                    
+
+                </tr>
+            </tbody>
+        </table>
+       <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator> 
+    </div>
+
+</div>
+<br>

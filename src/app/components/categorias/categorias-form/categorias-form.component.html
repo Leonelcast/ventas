@@ -24,32 +24,7 @@
                                             placeholder="Ingrese la descripcion del categoria">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="categoria" class="col-form-label col-sm-2">Categoria</label>
-                                    <div class="col-sm-6" >
-                                        <select [compareWith]="compararCategoria" name="categoria" class="form-control" [(ngModel)]="categoria.categoria">
-                                            <option *ngIf="!categoria.codigocategoria" [ngValue]="undefined">-----Seleccionar una categoria-----</option>
-                                            <option *ngFor="let categoria of categorias"
-                                                [ngValue]="categoria">
-                                                {{categoria.descripcion}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="tipoEmpaque" class="col-form-label col-sm-2">Tipo de Empaque</label>
-                                    <div class="col-sm-6" >
-                                        <select [compareWith]="compararTipoEmpaque" name="tipoEmpaque" class="form-control"
-                                            [(ngModel)]="categoria.tipoEmpaque">
-                                            <option *ngIf="!categoria.codigocategoria" [ngValue]="undefined">-----Seleccionar un tipo de empaque-----
-                                            </option>
-                                            <option *ngFor="let tipo of tipoEmpaques" [ngValue]="tipo">
-                                                {{tipo.descripcion}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group row">
                                     <div class="col-form-label col-sm-8">
                                         <button  *ngIf="!categoria.codigocategoria" class="btn btn-primary" role="button" (click)="create()">Crear</button>

@@ -15,8 +15,11 @@ export class CategoriaService {
   getData(url: string){
     return this.httpClient.get(`${this.urlEndPoint}/${url}`);
   }
-  getCategorias(): Observable<Categoria[]> {
-    return this.httpClient.get<Categoria[]>(`${this.urlEndPoint}/Categorias`);
+  getCategorias() {
+    return this.httpClient.get(`${this.urlEndPoint}/Categorias`);
+  }
+  public getCategoriasPage(page: number): Observable<any>{
+    return this.httpClient.get(`${this.urlEndPoint}/Categorias/page/${page}`);
   }
   create(categoria: CategoriaCreacionDTO): Observable<Categoria>{
     return this.httpClient.post(`${this.urlEndPoint}/categorias`, categoria).pipe(

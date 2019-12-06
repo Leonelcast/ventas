@@ -32,6 +32,7 @@ hasta: number;
     }else{ 
       this.paginas = new Array(this.paginador.totalPages).fill(0).map((valor, indice)=> indice +1);
     }
+    console.log(this.paginas.length);
   }
 
 }

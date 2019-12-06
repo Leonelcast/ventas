@@ -20,6 +20,8 @@ import { AuthInterceptor } from './components/login/interceptors/auth.intercepto
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CategoriasFormComponent } from './components/categorias/categorias-form/categorias-form.component';
+import { TipoEmpaqueFormComponent } from './components/tipo-empaques/tipo-empaque-form/tipo-empaque-form.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CategoriasFormComponent } from './components/categorias/categorias-form
     ProductosFormComponent,
     PaginatorComponent,
     CategoriasFormComponent,
+    TipoEmpaqueFormComponent,
+    FacturasComponent,
   ],
   imports: [
     BrowserModule,

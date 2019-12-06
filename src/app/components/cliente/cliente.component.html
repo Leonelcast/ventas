@@ -19,6 +19,8 @@
                     <th>DPI</th>
                     <th>Nombre</th>
                     <th>Direccion</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,8 +37,16 @@
                     <td>
                         {{cliente.direccion}}
                     </td>
+                    <td>
+                            <button (click)= "abrirModal(Facturas)"  type="button" name="editar" class="btn btn-primary btn-sm">Editar</button>
+                        </td>
+                        <td>
+                            <button (click)="delete(Facturas)" type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+                        </td>
                 </tr>
             </tbody>
+            
+            <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator> 
         </table>
     </div>
 </div>

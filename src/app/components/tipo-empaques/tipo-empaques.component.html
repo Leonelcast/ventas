@@ -1,31 +1,38 @@
-<br>
-<br>
+<app-tipo-empaque-form [tipoEmpaque]="tipoEmpaqueSeleccionado"></app-tipo-empaque-form>
+<br> 
 <div class="card border-primary mb-3">
-    <div class="card-header">Tipo empaques</div>
+    <div class="card-header">tipoEmpaque</div>
     <div class="card-body text-primary">
-        <h5 class="card-title">listado de tipo empaques </h5>
-        <div class="my-2 text-left">
-            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['home']">
-                crear tipo de empaque
-            </button>
-        </div>
-        <div *ngIf = "tipoEmpaques.lenght == 0" class="alert alert-info">
-            no hay registros en la base de datos 
-        </div>
+        <h5 class="card-tittle">Listado de tipoEmpaque</h5>
+        <hr>
+        <button class="btn btn-primary" type="button" (click)= "abrirModal()">Crear tipoEmpaque</button>
+        <br>
+        <br>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Descripcion</th>
+                    <th>CODIGO</th>
+                    <th>DESCRIPCION</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
                 </tr>
-              
             </thead>
             <tbody>
                 <tr *ngFor="let tipoEmpaque of tipoEmpaques">
+                    <td>{{tipoEmpaque.codigoEmpaque}} </td>
+                    <td>{{tipoEmpaque.descripcion}}</td>
                     <td>
-                        {{tipoEmpaque.descripcion}}
+                        <button (click)= "abrirModal(tipoEmpaque)"  type="button" name="editar" class="btn btn-primary btn-sm">Editar</button>
                     </td>
+                    <td>
+                        <button (click)="delete(tipoEmpaque)" type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                    
+
                 </tr>
             </tbody>
         </table>
     </div>
+
 </div>
+<br>
