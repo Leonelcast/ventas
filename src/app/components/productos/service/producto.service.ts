@@ -13,7 +13,7 @@ import { ProductoCreacionDTO } from '../producto-creacion-dto';
   providedIn: 'root'
 })
 export class ProductoService {
-  private urlEndPoint = 'https://localhost:44371/api/v1';
+  private urlEndPoint = 'https://localhost:443/api/v1';
   constructor(private httpClient: HttpClient, private router: Router) {
   }
   getProductos(): Observable<Producto[]> {

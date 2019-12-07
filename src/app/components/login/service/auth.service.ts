@@ -35,7 +35,7 @@ export class AuthService {
   }
   //la peticion espera recibir un body 
   login(usuario: Usuario): Observable<any> {
-    const urlEndPoint = 'https://localhost:44371/api/v1/cuentas/login';
+    const urlEndPoint = 'https://localhost:443/api/v1/cuentas/login';
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });

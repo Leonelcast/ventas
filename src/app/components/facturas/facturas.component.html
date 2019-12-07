@@ -19,12 +19,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let Facturas of Facturas">
-                    <td>{{facturas.numeroFactura}} </td>
-                    <td>{{facturas.numeroFactura}} </td>
-                    <td>{{facturas.cllientes.nit}} </td>
-                    <td>{{Facturas.fecha}}</td>
-                    <td>{{Facturas.total}}</td>
+                <tr *ngFor="let Factura of Facturas">
+                    <td>{{factura.numeroFactura}} </td>
+                    <td>{{factura.nit}} </td>
+                    <td>{{factura.fecha}} </td>
+                    <td>{{factura.total}}</td>
                     <td>
                         <button (click)= "abrirModal(Facturas)"  type="button" name="editar" class="btn btn-primary btn-sm">Editar</button>
                     </td>

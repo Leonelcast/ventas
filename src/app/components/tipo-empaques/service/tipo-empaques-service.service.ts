@@ -10,7 +10,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TipoEmpaquesService {
-  private urlEndPoint = 'https://localhost:44371/api/v1';
+  private urlEndPoint = 'https://localhost:443/api/v1';
   constructor(private httpClient: HttpClient, private router: Router) { }
   getData(url: string){
     return this.httpClient.get(`${this.urlEndPoint}/${url}`);

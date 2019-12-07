@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class ProveedorServiceService {
-  private API_URL = 'https://localhost:44371/api/v1';
+  private API_URL = 'https://localhost:443/api/v1';
   private token = '';
   constructor(private _httpClient: HttpClient) { }
   getData(url: string) {
