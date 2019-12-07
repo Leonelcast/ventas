@@ -13,10 +13,10 @@ export class TipoEmpaquesService {
   private urlEndPoint = 'https://localhost:44371/api/v1';
   constructor(private httpClient: HttpClient, private router: Router) { }
   getData(url: string){
-    return this.httpClient.get<TipoEmpaque[]>(`${this.urlEndPoint}/TipoEmpaques`);
+    return this.httpClient.get(`${this.urlEndPoint}/${url}`);
   }
-  getTipoEmpaques(): Observable<TipoEmpaque[]>{
-    return this.httpClient.get<TipoEmpaque[]>(`${this.urlEndPoint}/tipoEmpaques`);
+  getTipoEmpaques(){
+    return this.httpClient.get(`${this.urlEndPoint}/tipoEmpaques`);
   }
   create(tipoEmpaque: TipoEmpaqueCreacionDTO): Observable<TipoEmpaque>{
     return this.httpClient.post(`${this.urlEndPoint}/tipoEmpaques`, tipoEmpaque).pipe(

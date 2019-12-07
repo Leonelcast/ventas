@@ -19,7 +19,7 @@ export class TipoEmpaqueFormComponent implements OnInit {
     private tipoEmpaqueService: TipoEmpaquesService,
     private router: Router,
     private modalTipoEmpaqueService: ModalTipoEmpaqueService
-  ) { this.titulo = 'Agregar Tipo de Empaque'; }
+  ) {  }
 
   ngOnInit() {
   }
@@ -33,7 +33,7 @@ export class TipoEmpaqueFormComponent implements OnInit {
         'success');
         this.modalTipoEmpaqueService.notificarCambio.emit(tipoEmpaque);
         this.modalTipoEmpaqueService.cerrarModal();
-        this.router.navigate(['/tipoEmpaque']);
+        this.router.navigateByUrl('/tipoEmpaque');
       },
       error => {
         Swal.fire('Nuevo Tipo Empaque', `Error code ${error.status}`, 'error')

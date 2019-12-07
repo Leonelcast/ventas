@@ -22,6 +22,17 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { CategoriasFormComponent } from './components/categorias/categorias-form/categorias-form.component';
 import { TipoEmpaqueFormComponent } from './components/tipo-empaques/tipo-empaque-form/tipo-empaque-form.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
+import { DetalleFacturaComponent } from './components/detalle-factura/detalle-factura.component';
+import { EmailClientesComponent } from './components/email-clientes/email-clientes.component';
+import { TelefonoClientesComponent } from './components/telefono-clientes/telefono-clientes.component';
+import { ComprasComponent } from './components/compras/compras.component';
+import { DetalleComprasComponent } from './components/detalle-compras/detalle-compras.component';
+import { EmailProveedoresComponent } from './components/email-proveedores/email-proveedores.component';
+import { InventariosComponent } from './components/inventarios/inventarios.component';
+import { TelefonoProveedoresComponent } from './components/telefono-proveedores/telefono-proveedores.component';
+import { ClientesFormComponent } from './components/cliente/clientes-form/clientes-form.component';
+import { FacturasFormComponent } from './components/facturas/facturas-form/facturas-form.component';
+import { DetalleFacturaFormComponent } from './components/detalle-factura/detalle-factura-form/detalle-factura-form.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +51,17 @@ import { FacturasComponent } from './components/facturas/facturas.component';
     CategoriasFormComponent,
     TipoEmpaqueFormComponent,
     FacturasComponent,
+    DetalleFacturaComponent,
+    EmailClientesComponent,
+    TelefonoClientesComponent,
+    ComprasComponent,
+    DetalleComprasComponent,
+    EmailProveedoresComponent,
+    InventariosComponent,
+    TelefonoProveedoresComponent,
+    ClientesFormComponent,
+    FacturasFormComponent,
+    DetalleFacturaFormComponent,
   ],
   imports: [
     BrowserModule,

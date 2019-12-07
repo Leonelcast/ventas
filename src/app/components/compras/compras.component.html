@@ -1,0 +1,41 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">compra</div>
+    <div class="card-body text-primary">
+        <h5 class="card-tittle">Listado de compra</h5>
+        <hr>
+        <button class="btn btn-primary" type="button" (click)= "abrirModal()">Crear compra</button>
+        <br>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>NUMERO DE DOCUMENTO</th>
+                    <th>CODIGO PROVEEDOR</th>
+                    <th>FECHA</th>
+                    <th>TOTAL</th>
+                    <th>EDITAR</th>
+                    <th>ELIMINAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let compra of compras">
+                    <td>{{compra.codigocompra}} </td>
+                    <td>{{compra.descripcion}}</td>
+                    <td>{{compra.codigocompra}} </td>
+                    <td>{{compra.descripcion}}</td>
+                    <td>
+                        <button (click)= "abrirModal(compra)"  type="button" name="editar" class="btn btn-primary btn-sm">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="delete(compra)" type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+                    </td>
+                    
+
+                </tr>
+            </tbody>
+        </table>
+       <app-paginator *ngIf="paginador" [paginador]="paginador"></app-paginator> 
+    </div>
+
+</div>
+<br>

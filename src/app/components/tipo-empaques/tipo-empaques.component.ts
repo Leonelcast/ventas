@@ -14,20 +14,20 @@ export class TipoEmpaquesComponent implements OnInit {
   tipoEmpaqueSeleccionado: TipoEmpaque;
   tipo: string;
 
-  constructor(private tipoEmpaqueservice: TipoEmpaquesService, private ModalTipoEmpaqueService: ModalTipoEmpaqueService) {
-    this.tipoEmpaqueservice.getTipoEmpaques().subscribe((data: any) => {
+  constructor(private tipoEmpaqueService: TipoEmpaquesService, private ModalTipoEmpaqueService: ModalTipoEmpaqueService) {
+    this.tipoEmpaqueService.getTipoEmpaques().subscribe((data: any) => {
       this.tipoEmpaques = data;
     });
    }
 
   ngOnInit() {
-    this.ModalTipoEmpaqueService.notificarCambio.subscribe(tipoEmpaques => {
+    this.ModalTipoEmpaqueService.notificarCambio.subscribe(tipoEmpaque => {
       if (this.tipo === 'new') {
-        this.tipoEmpaques.push(tipoEmpaques);
+        this.tipoEmpaques.push(TipoEmpaque);
       } else if (this.tipo === 'update') {
         this.tipoEmpaques = this.tipoEmpaques.map(tipoEmpaquesOriginal => {
-          if (tipoEmpaques.codigoEmpaque === tipoEmpaquesOriginal.codigoEmpaque) {
-            tipoEmpaquesOriginal = tipoEmpaques;
+          if (tipoEmpaque.codigoEmpaque === tipoEmpaquesOriginal.codigoEmpaque) {
+            tipoEmpaquesOriginal = tipoEmpaque;
           }
           return tipoEmpaquesOriginal;
         });
@@ -35,7 +35,7 @@ export class TipoEmpaquesComponent implements OnInit {
     });
   }
 
-  delete(tipoEmpaques: TipoEmpaque): void {
+  delete(tipoEmpaque: TipoEmpaque): void {
     Swal.fire({
       title: 'Eliminar registro',
       text: 'Está seguro de eliminar el registro?',
@@ -49,18 +49,18 @@ export class TipoEmpaquesComponent implements OnInit {
       buttonsStyling: false,
       reverseButtons: true
     }).then((result) => {
-        this.tipoEmpaqueservice.delete(tipoEmpaques.codigoEmpaque).subscribe(
+        this.tipoEmpaqueService.delete(tipoEmpaque.codigoEmpaque).subscribe(
           () => {
-            this.tipoEmpaques = this.tipoEmpaques.filter(prod => prod !== tipoEmpaques);
-            Swal.fire('tipo empaques eliminado', `tipo empaques ${tipoEmpaques.descripcion} eliminado correctamente`, 'success');
+            this.tipoEmpaques = this.tipoEmpaques.filter(prod => prod !== tipoEmpaque);
+            Swal.fire('Tipo Emapque eliminado', `Tipo Empaque ${tipoEmpaque.descripcion} eliminado correctamente`, 'success');
           }
         );
       });
     }
 
-    abrirModal(tipoEmpaques?: TipoEmpaque) {
-      if (tipoEmpaques) {
-        this.tipoEmpaqueSeleccionado = tipoEmpaques;
+    abrirModal(tipoEmpaque?: TipoEmpaque) {
+      if (tipoEmpaque) {
+        this.tipoEmpaqueSeleccionado = tipoEmpaque;
         this.tipo = 'update';
       } else {
         this.tipo = 'new';
@@ -68,4 +68,4 @@ export class TipoEmpaquesComponent implements OnInit {
       }
       this.ModalTipoEmpaqueService.abrirModal();
     }
-  }
+}

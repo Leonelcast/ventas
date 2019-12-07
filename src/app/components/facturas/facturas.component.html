@@ -10,6 +10,7 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th>NUMERO DE FACTURA</th>
                     <th>NIT</th>
                     <th>FECHA</th>
                     <th>TOTAL</th>
@@ -18,7 +19,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let Facturas of Facturass">
+                <tr *ngFor="let Facturas of Facturas">
+                    <td>{{facturas.numeroFactura}} </td>
                     <td>{{facturas.numeroFactura}} </td>
                     <td>{{facturas.cllientes.nit}} </td>
                     <td>{{Facturas.fecha}}</td>
